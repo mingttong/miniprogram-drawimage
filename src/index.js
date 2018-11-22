@@ -205,7 +205,8 @@ Component({
                     color = '#000',
                     lineHeight = 44,
                     maxWidth = width,
-                    border = '0',
+                    // 删除border默认值，formatBorder会处理默认情况
+                    border,
                     radius = 0,
                     padding = 0,
                     bgColor = null,
@@ -321,7 +322,10 @@ Component({
         });
 
         ctx.draw(false, () => {
-            drawed.call(this);
+            // 解决文字忽大忽小的情况
+            setTimeout(() => {
+                drawed.call(this);
+            }, 500);
         });
 
         setTimeout(() => {
